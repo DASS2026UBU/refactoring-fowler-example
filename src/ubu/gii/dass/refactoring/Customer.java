@@ -31,26 +31,40 @@ public class Customer {
 	};
 
 	public String statement() {
-		double totalAmount = 0;
-		int frequentRenterPoints = 0;
 		Iterator<Rental> rentals = _rentals.iterator();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			// determine amounts for each line
-			thisAmount = amountFor(thisAmount, each);
 			
-			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 			// show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t"
 					+ String.valueOf(thisAmount) + "\n";
-			totalAmount += thisAmount;
+			
 		}
 		// add footer lines
-		result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-		result += "You earned " + String.valueOf(frequentRenterPoints)
+		result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
+		result += "You earned " + String.valueOf(getTotalFrequentRenterPoints())
 				+ " frequent renter points";
+		return result;
+	}
+	
+	public String htmlStatement() {
+		Iterator<Rental> rentals = _rentals.iterator();
+		String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
+		
+		while (rentals.hasNext()) {
+			Rental each = rentals.next();
+			// show figures for each rental
+			result += each.getMovie().getTitle() + ": "
+					+ String.valueOf(each.getCharge()) + "<BR>\n";
+		}
+		
+		// add footer lines
+		result += "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
+		result += "On this rental you earned <EM>"
+				+ String.valueOf(getTotalFrequentRenterPoints())
+				+ "</EM> frequent renter points<P>";
 		return result;
 	}
 	
