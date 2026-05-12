@@ -53,18 +53,34 @@ public class Customer {
 				+ " frequent renter points";
 		return result;
 	}
+	
+	private double getTotalCharge() {
+		double result = 0;
+		for(Rental rental : _rentals) {
+			result += rental.getCharge();
+		}
+		return result;
+	}
+	
+	private int getTotalFrequentRenterPoints() {
+		int result = 0;
+		for (Rental rental : _rentals) {
+			result += rental.getFrequentRenterPoints();
+		}
+		return result;
+	}
 
 	/**
 	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#getFrequentRenterPoints(int)} instead
 	 */
 	private int getFrequentRenterPoints(int frequentRenterPoints, Rental each) {
-		return each.getFrequentRenterPoints(frequentRenterPoints);
+		return each.getFrequentRenterPoints();
 	}
 
 	/**
 	 * @deprecated Use {@link ubu.gii.dass.refactoring.Rental#amountFor(double)} instead
 	 */
 	private double amountFor(double thisAmount, Rental each) {
-		return each.amountFor(thisAmount);
+		return each.getCharge();
 	}
 }
