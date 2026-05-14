@@ -31,16 +31,21 @@ public class Customer {
 	};
 
 	public String statement() {
+		double totalAmount = 0;
+		int frequentRenterPoints = 0;
 		Iterator<Rental> rentals = _rentals.iterator();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasNext()) {
 			double thisAmount = 0;
 			Rental each = rentals.next();
-			
+			// determine amounts for each line
+			thisAmount = amountFor(thisAmount, each);
+
+			frequentRenterPoints = getFrequentRenterPoints(frequentRenterPoints, each);
 			// show figures for this rental
 			result += "\t" + each.getMovie().getTitle() + "\t"
 					+ String.valueOf(thisAmount) + "\n";
-			
+			totalAmount += thisAmount;
 		}
 		// add footer lines
 		result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
@@ -67,6 +72,7 @@ public class Customer {
 				+ "</EM> frequent renter points<P>";
 		return result;
 	}
+	
 	
 	private double getTotalCharge() {
 		double result = 0;

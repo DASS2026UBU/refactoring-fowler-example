@@ -55,5 +55,21 @@ public class VideoClubTest {
 		assertTrue("Calcula mal el alquiler", salidaEsperada.equals(salida));
 
 	}
+	
+	@Test
+	public void testHtmlStatement() {
+		
+	    Customer customer = new Customer("Juan");
+	    Movie movie1 = new Movie("Pelicula de Prueba", Movie.REGULAR);
+	    Rental rental1 = new Rental(movie1, 3); 
+	    customer.addRental(rental1);
+
+	    String expectedHtml = "<H1>Rentals for <EM>Juan</EM></H1><P>\n" +
+	                          "Pelicula de Prueba: 3.5<BR>\n" +
+	                          "<P>You owe <EM>3.5</EM><P>\n" +
+	                          "On this rental you earned <EM>1</EM> frequent renter points<P>";
+
+	    assertEquals(expectedHtml, customer.htmlStatement());
+	}
 
 }
