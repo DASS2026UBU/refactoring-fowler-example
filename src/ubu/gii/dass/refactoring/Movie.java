@@ -73,6 +73,6 @@ public class Movie {
 	 * @deprecated Use {@link ubu.gii.dass.refactoring.MoviePrice#getFrequentRenterPoints(ubu.gii.dass.refactoring.Movie,int)} instead
 	 */
 	int getFrequentRenterPoints(int daysRented) {
-		return _price.getFrequentRenterPoints(this, daysRented);
+		return _price.getFrequentRenterPoints(daysRented);
 	}
 }

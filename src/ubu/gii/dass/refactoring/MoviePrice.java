@@ -7,11 +7,7 @@ public abstract class MoviePrice {
 	public abstract double getCharge(int daysRented);
 
 
-	int getFrequentRenterPoints(Movie movie, int daysRented) {
-		// add bonus for a two day new release rental
-		if ((movie.getPriceCode() == Movie.NEW_RELEASE)
-				&& daysRented > 1)
-			return 2;
+	public int getFrequentRenterPoints(int daysRented) {
 		return 1;
 	}
 	
