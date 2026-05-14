@@ -28,7 +28,7 @@ public class Rental {
 	}
 
 	/**
-	 * @deprecated Use {@link ubu.gii.dass.refactoring.Movie#getCharge(int)} instead
+	 * @deprecated Use {@link #MISSING()} instead
 	 */
 	double getCharge() {
 		return _movie.getCharge(_daysRented);
