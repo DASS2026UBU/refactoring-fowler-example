@@ -63,10 +63,17 @@ public class Movie {
 		return result;
 	}
 
+	/**
+	 * @deprecated Use {@link #getFrequentRenterPoints(int)} instead
+	 */
 	int getFrequentRenterPoints(Rental rental) {
+		return getFrequentRenterPoints(null);
+	}
+
+	int getFrequentRenterPoints(int daysRented) {
 		// add bonus for a two day new release rental
-		if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-				&& rental.getDaysRented() > 1)
+		if ((getPriceCode() == Movie.NEW_RELEASE)
+				&& daysRented > 1)
 			return 2;
 		return 1;
 	}
