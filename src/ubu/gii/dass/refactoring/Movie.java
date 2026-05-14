@@ -59,7 +59,7 @@ public class Movie {
 	 * @deprecated Use {@link ubu.gii.dass.refactoring.MoviePrice#getCharge(ubu.gii.dass.refactoring.Movie,int)} instead
 	 */
 	double getCharge(int daysRented) {
-		return _price.getCharge(this, daysRented);
+		return _price.getCharge(daysRented);
 	}
 
 	/**
