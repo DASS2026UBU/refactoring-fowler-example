@@ -35,7 +35,7 @@ public class Rental {
 	}
 
 	/**
-	 * @deprecated Use {@link ubu.gii.dass.refactoring.Movie#getFrequentRenterPoints(int)} instead
+	 * @deprecated Use {@link #MISSING()} instead
 	 */
 	int getFrequentRenterPoints() {
 		return _movie.getFrequentRenterPoints(_daysRented);
