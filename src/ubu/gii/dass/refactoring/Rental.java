@@ -28,10 +28,10 @@ public class Rental {
 	}
 
 	/**
-	 * @deprecated Use {@link ubu.gii.dass.refactoring.Movie#getCharge(ubu.gii.dass.refactoring.Rental)} instead
+	 * @deprecated Use {@link ubu.gii.dass.refactoring.Movie#getCharge(int)} instead
 	 */
 	double getCharge() {
-		return _movie.getCharge(this);
+		return _movie.getCharge(_daysRented);
 	}
 
 	/**
